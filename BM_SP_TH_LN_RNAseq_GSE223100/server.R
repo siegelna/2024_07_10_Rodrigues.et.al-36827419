@@ -39,23 +39,23 @@ server <- function(input, output, session) {
 #     selectInput("group2", "Select Time Point", choices = unique(meta.df$Time_Point))
 #   })
   
-  output$additional_group_select <- renderUI({
-    selectizeInput("additional_group", "Subset Grouping Variable", choices = NULL, multiple = TRUE)
-  })
+#   output$additional_group_select <- renderUI({
+#     selectizeInput("additional_group", "Subset Grouping Variable", choices = NULL, multiple = TRUE)
+#   })
   
-  observeEvent(input$facet, {
-    if (!is.null(input$facet)) {
-      group_values <- unique(meta.df[[input$facet]])
-      updateSelectizeInput(session, "additional_group", choices = group_values, server = TRUE)
-    }
-  })
+#   observeEvent(input$facet, {
+#     if (!is.null(input$facet)) {
+#       group_values <- unique(meta.df[[input$facet]])
+#       updateSelectizeInput(session, "additional_group", choices = group_values, server = TRUE)
+#     }
+#   })
 
-  output$facet <- renderUI({
-    if(input$plotType == "Distribution Plot") {
-      choices <- "CellType"
-      selectInput("facet", "Additional Grouping Variable", choices = choices, selected = "CellType")
-    }
-  })
+#   output$facet <- renderUI({
+#     if(input$plotType == "Distribution Plot") {
+#       choices <- "CellType"
+#       selectInput("facet", "Additional Grouping Variable", choices = choices, selected = "CellType")
+#     }
+#   })
   
   output$y_axis <- renderUI({
     selectInput("y_axis", "Select Y-Axis Column", choices = c("Condition",  setdiff(colnames(meta.df), "Sample")))
@@ -90,20 +90,20 @@ server <- function(input, output, session) {
   })
 
   distribution.plot <- reactive({
-    req(input$gene, input$facet, input$group)  # Require these inputs
+    req(input$gene, input$group)  # Require these inputs
     
     gene.idx <- which(rownames(expression.mat) == input$gene)
     plot.df <- meta.df %>%
       left_join(data.frame(Sample = colnames(expression.mat), value = expression.mat[gene.idx, ]), by = c("Sample" = "Sample"))
     
-    plot.df <- plot.df %>%
-      mutate_at(vars(input$facet, input$group), factor) %>%
-      arrange(.data[[input$facet]])
+    # plot.df <- plot.df %>%
+    #   mutate_at(vars(input$facet, input$group), factor) %>%
+    #   arrange(.data[[input$facet]])
     
     # Filter for selected additional grouping variables
-    if (!is.null(input$additional_group)) {
-      plot.df <- plot.df %>% filter(.data[[input$facet]] %in% input$additional_group)
-    }
+    # if (!is.null(input$additional_group)) {
+    #   plot.df <- plot.df %>% filter(.data[[input$facet]] %in% input$additional_group)
+    # }
     
     # Filter for the desired Time_Point value
     # desired_time_point <- input$group2
@@ -113,8 +113,8 @@ server <- function(input, output, session) {
     # Create the distribution plot for the filtered data
     distribution.plot_filtered <- ggplot(plot.df, aes(x = CellType, y = value, fill = Condition)) +
       geom_boxplot(color = "black") +  
-      facet_grid(. ~ Condition, scales = "free_x", labeller = label_both) +  
-      labs(y = "Expression (CPM)", title = paste(input$gene, "-")) +
+      facet_grid(. ~ Condition, scales = "free_x") +  
+      labs(y = "Expression (CPM)", title = paste(input$gene)) +
       theme_minimal() +
       theme(legend.position = "top", axis.text.x = element_text(angle = 35, hjust = 1)) +
       theme(axis.title.x = element_blank()) +
@@ -127,7 +127,7 @@ server <- function(input, output, session) {
     if(input$plotType == "Scatter Plot"){
       scatter.plot()
     } else {
-      req(input$gene, input$facet)
+    #   req(input$gene, input$facet)
       distribution.plot()
     }
   })
@@ -135,7 +135,7 @@ server <- function(input, output, session) {
   output$out_plot_table <- renderDT({
     req(input$plotType)
     if(input$plotType == "Distribution Plot"){
-      req(input$gene, input$facet)
+    #   req(input$gene, input$facet)
       distribution.plot()$data %>%
         arrange(CellType, Condition) %>%
         mutate(value = round(value, 3)) %>%

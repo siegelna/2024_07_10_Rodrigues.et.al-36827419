@@ -1,7 +1,7 @@
 # ui.R
 
 ui <- fluidPage(
-  titlePanel("Cancer Anti-PD1 Flu vaccine PBMC RNA-seq "),
+  titlePanel("Mouse Various Tissue DCs RNA-seq "),
   sidebarLayout(
     sidebarPanel(
       tags$head(
@@ -55,16 +55,12 @@ ui <- fluidPage(
       selectInput("plotType", "Plot Type", choices = c("Distribution Plot", "Scatter Plot")),
       uiOutput("gene"),
       uiOutput("group"),
-      uiOutput("group2"),  # New UI element for Grouping Variable 2
+    #   uiOutput("group2"),  # New UI element for Grouping Variable 2
       uiOutput("facet"),
       uiOutput("fill"),
       conditionalPanel(
         condition = "input.plotType == 'Scatter Plot'",
         uiOutput("y_axis")
-      ),
-      conditionalPanel(
-        condition = "input.plotType == 'Distribution Plot' && input.group != 'None'",
-        selectizeInput("additional_group", "Subset Grouping Variable", choices = NULL, multiple = TRUE)
       )
     ),
     mainPanel(

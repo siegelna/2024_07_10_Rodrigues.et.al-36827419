@@ -1,0 +1,43 @@
+Sample,Tissue,CellType
+BM_pDCs_R1,Bone Marrow,pDCs
+BM_pDC_like_R1,Bone Marrow,pDC-like
+Spl_pDCs_R1,Spleen,pDCs
+Spl_pDC_like_R1,Spleen,pDC-like
+Spl_cDC1_R1,Spleen,cDC1
+Spl_cDC2_R1,Spleen,cDC2
+Thy_pDCs_R1,Thymus,pDCs
+Thy_pDC_like_R1,Thymus,pDC-like
+Thy_cDC1_R1,Thymus,cDC1
+Thy_cDC2_R1,Thymus,cDC2
+mLN_pDCs_R1,mesenteric Lymph Nodes,pDCs
+mLN_pDC_like_R1,mesenteric Lymph Nodes,pDC-like
+mLN_cDC1_R1,mesenteric Lymph Nodes,cDC1
+mLN_cDC2_R1,mesenteric Lymph Nodes,cDC2
+BM_pDCs_R2,Bone Marrow,pDCs
+BM_pDC_like_R2,Bone Marrow,pDC-like
+Spl_pDCs_R2,Spleen,pDCs
+Spl_pDC_like_R2,Spleen,pDC-like
+Spl_cDC1_R2,Spleen,cDC1
+Spl_cDC2_R2,Spleen,cDC2
+Thy_pDCs_R2,Thymus,pDCs
+Thy_pDC_like_R2,Thymus,pDC-like
+Thy_cDC1_R2,Thymus,cDC1
+Thy_cDC2_R2,Thymus,cDC2
+mLN_pDCs_R2,mesenteric Lymph Nodes,pDCs
+mLN_pDC_like_R2,mesenteric Lymph Nodes,pDC-like
+mLN_cDC1_R2,mesenteric Lymph Nodes,cDC1
+mLN_cDC2_R2,mesenteric Lymph Nodes,cDC2
+BM_pDCs_R3,Bone Marrow,pDCs
+BM_pDC_like_R3,Bone Marrow,pDC-like
+Spl_pDCs_R3,Spleen,pDCs
+Spl_pDC_like_R3,Spleen,pDC-like
+Spl_cDC1_R3,Spleen,cDC1
+Spl_cDC2_R3,Spleen,cDC2
+Thy_pDCs_R3,Thymus,pDCs
+Thy_pDC_like_R3,Thymus,pDC-like
+Thy_cDC1_R3,Thymus,cDC1
+Thy_cDC2_R3,Thymus,cDC2
+mLN_pDCs_R3,mesenteric Lymph Nodes,pDCs
+mLN_pDC_like_R3,mesenteric Lymph Nodes,pDC-like
+mLN_cDC1_R3,mesenteric Lymph Nodes,cDC1
+mLN_cDC2_R3,mesenteric Lymph Nodes,cDC2
